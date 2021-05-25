@@ -1,0 +1,43 @@
+.projects .box {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2vh 2vw 4vh 2vw;
+}
+
+.project {
+    position: relative;
+    width: calc(50% - 30px);
+    margin: 20px 0 0 20px;
+    transition: 0.5s;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.project:nth-child(even) {
+    margin-right: 20px;
+}
+
+.project .title {
+    position: absolute;
+    top: 35%;
+    padding: 20px;
+    z-index: 1;
+    width: 100%;
+    text-align: center;
+}
+
+.project .link img {
+    width: 100%;
+    transition: 0.5s;
+}
+
+.project a {
+    white-space: nowrap;
+}
+
+@media screen and (max-width: 800px) {
+    .project {
+        width: 100%;
+        margin: 2vh 0 !important;
+    }
+}

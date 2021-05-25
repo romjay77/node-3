@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<title>Комплексный ремонт и отделка высокого уровня квартир офисов, комерчиской недвижемости | Услуги | PodKey.by</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="format-detection" content="telephone=yes"/>
+		<meta name="format-detection" content="address=yes" />
+		<meta name="MobileOptimized" content="width" />
+		<meta name="HandheldFriendly" content="true" />
+		
+        <link href="images/icons/favicon.ico" rel="mask-icon">
+		<link rel="icon" type="image/ico" href="images/icons/favicon.ico"/>
+
+        <meta name="title" content="Комплексный ремонт и отделка высокого уровня квартир офисов, комерчиской недвижемости | Услуги | PodKey.by">
+		<meta name="description" content="
+        Хотите сделать хороший ремонт квартиры, котеджа, дома или комерчиской недвижемости за разумные деньги в Минске или по всей РБ? Обращайтесь к нам! Мы поможем минимизировать предстоящие расходы. Цены 2021 год">
+		<meta name="robots" content="index" />
+
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.1/css/all.css">
+        <link rel="stylesheet" href="dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="stylesheets/style.css">
+        <link rel="stylesheet" href="stylesheets/header.css">
+        <link rel="stylesheet" href="stylesheets/footer.css">
+        <link rel="stylesheet" href="stylesheets/form.css">
+        <link rel="stylesheet" href="stylesheets/main.css">
+        <link rel="stylesheet" href="stylesheets/projects.css">
+
+		<script type="text/javascript" src="dist/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="javascripts/main.js"></script>
+		<script type="text/javascript" src="javascripts/form.js"></script>
+		<script type="text/javascript" src="javascripts/projects.js"></script>
+	</head>
+	<body onload="init();">
+		<%- include('layout/_header', { state: state }) %>
+		
+		<div id="main-container">
+			<% if (state === 'index') { %>
+				<%- include('partials/main') %>
+			<% } %>
+			<% if (state === 'about') { %>
+				<%- include('partials/about') %>
+			<% } %>
+			<% if (state === 'projects') { %>
+				<%- include('partials/projects') %>
+			<% } %>
+			<% if (state === 'repair-flat') { %>
+				<%- include('partials/repair-flat') %>
+			<% } %>
+			<% if (state === 'repair-house') { %>
+				<%- include('partials/repair-house') %>
+			<% } %>
+			<% if (state === 'repair-estate') { %>
+				<%- include('partials/repair-estate') %>
+			<% } %>
+		</div>
+
+		<%- include('layout/_footer') %>
+		<!-- Modal -->
+		<div class="modal fade" id="subscription-modal" tabindex="-1" aria-labelledby="header-label" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content" style="background-color: #ffffffe6;">
+					<div class="modal-header">
+						<h5 class="modal-title" id="header-label">Закажите звонок</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<%- include('layout/_form') %>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+						<button type="button" id="submitter" class="btn btn-primary">Отправить</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal -->
+		<div class="modal fade" id="projects" tabindex="-2" aria-labelledby="header-projects-label" aria-hidden="true">
+			<div class="modal-dialog modal-fullscreen">
+				<div class="modal-content" id="project-modal-content">
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+

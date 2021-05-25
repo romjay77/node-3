@@ -1,0 +1,53 @@
+.footer {
+    padding-top: 40px;
+    color: whitesmoke;
+    text-shadow: 1px 1px 5px #00000096;
+}
+
+.footer-contact a {
+    border-color: inherit !important;
+    background: #65727db8 !important;
+    color: white;
+}
+
+.footer .header .logo {
+    bottom: 70px;
+}
+
+.footer p {
+    max-width: 400px;
+}
+
+.footer .s-text {
+    color: whitesmoke !important;
+    text-shadow: 1px 1px 5px #00000096;
+}
+
+.footer .input::placeholder {
+    color: whitesmoke;
+}
+
+.footer .item {
+    text-align: left;
+    margin: 10px 0 0 0;
+}
+
+.footer-filter {
+    height: 100%;
+    width: 100%;
+    background-color: rgb(80 65 0 / 50%);
+    z-index: -1;
+}
+
+.footer-background {
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    background-image: url(/images/footer-background.jpg);
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+}

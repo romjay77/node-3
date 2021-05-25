@@ -1,0 +1,62 @@
+.full-info {
+    padding: 0 !important;
+    width: 100%;
+}
+
+.project .description {
+    font-size: small;
+    position: absolute;
+    text-align: center;
+    padding: 10px;
+    transition: 1s;
+    top: 35%;
+    cursor: default;
+    text-shadow: 1px 1px 5px #00000096;
+}
+
+.full-info .project .title {
+    top: 15%;
+    padding: 10px;
+}
+
+.full-info .project:nth-child(even) {
+    margin-right: 0px;
+}
+
+.image-source {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#project-modal-content .modal-header,#project-modal-content .modal-footer {
+    height: 5%;
+}
+
+#project-modal-content .active {
+    background-color: white;
+}
+
+#project-modal-content .carousel-control-next,#project-modal-content .carousel-control-prev {
+    filter: drop-shadow(0px 0px 5px black);
+}
+
+.modal-body {
+    height: 100%;
+    padding: 0;
+}
+
+.carousel-item {
+    height: 100%;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.carousel, .carousel-inner {
+    height: 100%;
+}
+
+.carousel-item video {
+    max-height: 100%;
+    max-width: 80%;
+}

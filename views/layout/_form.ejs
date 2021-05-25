@@ -1,0 +1,33 @@
+<div class="form-box">
+    <form class="form validate-form" action="/send" method="POST">
+        <div class="s-text">
+            Закажите звонок
+        </div>
+
+        <div class="wrap-input validate-input" data-validate="Введите полное имя">
+            <input class="input" type="text" name="name" id="name" placeholder="Полное имя">
+            <span class="focus-input"></span>
+        </div>
+
+        <div class="wrap-input validate-input" data-validate="Введите эл. почту: e@a.x">
+            <input class="input" type="text" id="email" name="email" placeholder="E-mail">
+            <span class="focus-input"></span>
+        </div>		
+
+        <div class="wrap-input validate-input" data-validate="Введите телефон">
+            <input class="input" type="text" id="phone" name="phone" placeholder="Телефон">
+            <span class="focus-input"></span>
+        </div>			
+
+        <div class="wrap-input validate-input" data-validate="Введите сообщение">
+            <textarea class="input" name="message" id="message" placeholder="Сообщение"></textarea>
+            <span class="focus-input"></span>
+        </div>
+        <div class="form-btn">
+            <button class="jump">
+                <i class="far fa-paper-plane jump" style="padding-right: 10px;"></i>
+                Отправить
+            </button>
+        </div>
+    </form>
+</div>

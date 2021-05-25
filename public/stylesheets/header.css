@@ -1,0 +1,488 @@
+.link-dropdown {
+	position: absolute;
+    background: linear-gradient(105deg , rgb(70 68 47 / 90%) 0%, rgb(100 78 52 / 80%) 50%, rgb(71 80 36 / 90%) 100%);
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    z-index: 1050;
+    box-shadow: 0 1px 20px 1px rgb(0 0 0 / 90%);
+	visibility: hidden;
+	width: 230px;
+    height: 100px;
+    justify-content: space-around;
+}
+
+.link-dropdown .item {
+	margin: 0 0 5px 0;
+    max-width: 300px;
+	font-size: medium;
+}
+.link-dropdown .item:nth-last-child(1) {
+	margin: 0;
+}
+
+.show {
+	visibility: visible !important;
+}
+
+.toggle-button {
+	cursor: pointer;
+    top: 0;
+    right: 0;
+    z-index: 5;
+}
+
+.button {
+	padding: 10px 20px;
+	border: 1px solid;
+	border-radius: 5px;
+	position: relative;
+}
+
+.button.secondary {
+	background-color: #00000080;
+	border-color: black;
+	cursor: pointer;
+}
+
+.shadow {
+	transition: 0.5s;
+	box-shadow: 0 5px 10px 1px rgba(0,0,0,.65)  !important;
+}
+
+.toggle {
+	color: white !important;
+}
+
+.nav-menu {
+	bottom: 80px;
+	height: 80px;
+	position: relative;
+	z-index: 500;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.header {
+	min-width: 200px;
+	overflow: hidden;
+	height: 80px;
+}
+
+.brand .logo {
+	width: 200px;
+	position: relative;
+	bottom: 50px;
+}
+
+.icon {
+	display: none;
+	padding: 13px 2vw;
+	height: 80px;
+	filter: drop-shadow(0px 0px 2px black);
+}
+
+.item {
+	cursor: pointer;
+	border-radius: 5px;
+	padding: 0px 10px;
+	transition: background-color 0.5s, text-shadow 0.5s;
+	color: white !important;
+	margin: 0 2vw;
+	font-size: large;
+	text-align: center;
+	text-shadow: 2px 2px 10px #000000c4;
+}
+.item:hover {
+	background-color: rgb(33 16 39 / 30%);	
+	text-shadow: 1px 1px 5px black;
+}
+
+.active {
+	border-radius: 25px;
+	background-color: rgb(33 16 39 / 30%);
+	text-shadow: 1px 1px 5px black;
+}
+
+.nav-mobile {
+	display: none;
+	position: fixed;
+	z-index: 1000;
+	top: 0 !important;
+	left: 0;
+	background: linear-gradient(142deg, rgb(82 44 12 / 90%) 0%, rgb(95 12 12 / 80%) 50%, rgb(106 70 3 / 90%) 100%);
+	height: 100%;
+	width: 100%;
+	opacity: 0;
+}
+
+.items {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+}
+
+.items .item {
+	width: 80%;
+	font-size: large;
+	margin: 1vh 2vw;
+}
+
+.logo-box {
+	display: flex;
+	justify-content: space-between;
+	height: 80px;
+	margin-bottom: 4vh;
+}
+
+.nav-mobile .link-box {
+	margin-top: 15vh;
+	font-size: large;
+}
+
+.nav-mobile .link-box > div {
+	margin-top: 3vh;
+}
+
+.nav-mobile a {
+	color: white;
+}
+
+nav.nav-menu::after {
+	content: '';
+	position: absolute;
+	width: 100%;
+	bottom: -80px;
+	background-color: white;
+}
+
+.fixed-menu {
+	position: fixed;
+	top: 0;
+	opacity: 1;
+	width: 100%;
+	height: 50px;
+	box-shadow: 0 3px 10px 0px rgba(0,0,0,.65);
+	background: linear-gradient(142deg, rgb(156 158 117 / 90%) 0%, rgb(228 128 128 / 66%) 50%, rgb(208 172 106 / 77%) 100%);
+	z-index: 500;
+    display: none;
+    justify-content: center;
+	align-items: center;
+}
+.fixed-menu .header {
+	min-width: 150px ;
+	height: 50px;
+}
+.fixed-menu .header .brand .logo {
+	width: 150px;
+	bottom: 50px;
+}
+
+.show-menu {
+	display: flex !important;
+
+	-webkit-animation:  0.5s show-menu;
+	animation:  0.5s show-menu;
+}
+@-webkit-keyframes show-menu { from { 
+	top: -50px;
+	opacity: 0;
+ } to { 
+	top: 0;
+	opacity: 1;
+	}
+}
+@keyframes show-menu { from {
+	opacity: 0;
+ } to {
+	opacity: 1;
+	}
+}
+
+.background {
+	height: 100%;
+	overflow: hidden;
+}
+
+.gradient {
+	background-attachment: fixed;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	z-index: 5;
+	background: linear-gradient(142deg, rgb(141 76 20 / 50%) 0%, rgb(208 18 18 / 20%) 50%, rgb(255 165 0 / 10%) 100%);
+}
+
+.background .box {
+	height: 100%;
+	width: 100%;
+	position: relative;
+	z-index: -1;
+	-o-background-size: cover;
+	-moz-background-size: cover;
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: bottom;
+}
+
+.scale-background {
+	animation: 3s scale-background;
+}
+@keyframes scale-background { 
+	from { 
+		transform: scale(1.2);
+	} to { 
+		opacity: scale(1);
+	}  
+}
+
+.background .index {
+	background-image: url(/images/main-background.jpg);
+}
+
+.background .about {
+	background-image: url(/images/about-us.jpg);
+}
+
+.background .projects {
+	background-image: url(/images/projects.jpg);
+}
+
+.background .repair-flat {
+	background-image: url(/images/flat-background.jpg);
+}
+
+.background .repair-house {
+	background-image: url(/images/home-background.jpg);
+}
+
+.background .repair-estate {
+	background-image: url(/images/office-background.jpg);
+}
+
+.main-name {
+	padding: 2vh 2vw;
+    position: absolute;
+    text-align: center;
+    z-index: 7;
+    width: 100%;
+    height: calc(80% - 80px);
+    top: 15%;
+    display: flex;
+    justify-content: flex-end;
+    color: white;
+}
+
+.text-box {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    align-items: flex-end;
+	text-align: left;
+	max-width: 600px;
+}
+
+.text-box h1 {
+	font-size: xx-large !important;
+    text-align: left;
+    width: 100%;
+}
+
+.text-box p {
+	font-size: large !important;
+}
+
+.main-name a {
+	color: white;
+	font-size: large;
+}
+.main-name a:hover {
+	color: white;
+	text-decoration: none;
+}
+
+.main-name h1 {
+	font-size: x-large;
+}
+
+.main-name p {
+	line-height: 26px;
+}
+
+.link-box {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.fixed-link-box a {
+	padding: 10px 12px;
+    box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 30%);
+    border-color: inherit !important;
+    background: gainsboro !important;
+    font-size: xx-large;
+    border-radius: 50px;
+}
+
+.fixed-link-box {
+	flex-direction: column;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+	z-index: 1000;
+	visibility: hidden;
+}
+.fixed-show-box {
+	visibility: visible;
+	display: flex;
+	animation: 1s show-box ease;
+}
+
+@keyframes show-box {
+	00% { bottom: 100%;; }
+	95% { bottom: 0%; }
+	100% { bottom: 10px; }
+}
+
+.link-box > div {
+	margin: 2vh 1vw;
+}
+
+.s-tel {
+	width: 100%;
+	padding: 1vh 1vw;
+	display: flex;
+	justify-content: center;
+}
+
+.s-tel a {
+	font-size: large;
+	color: #3c1e2f;
+}
+
+.opacity {
+	opacity: 1 !important;
+}
+
+::-webkit-scrollbar {
+	width: 1vw;
+	height: 1vh;
+}
+   
+::-webkit-scrollbar-track {
+	background-color: transparent;
+}
+   
+::-webkit-scrollbar-thumb {
+	background-color: #003b4d80;
+}
+
+/* Responive */
+
+@media screen and (max-width: 800px) {
+	.nav-menu > .item, .fixed-menu > .item{
+		display: none;
+	}
+
+	.nav-menu, .fixed-menu {
+		justify-content: space-between;
+	}
+	
+	.header {
+		padding: 0 2vw;
+	}
+
+   .bot {
+	   position: absolute;
+	}
+
+   .pbot {
+	   margin-right: 3em; 
+	   height: 39px;
+	}
+
+   .botM {
+	   margin-top: 10px;
+	}
+
+   .botL {
+	   margin-top: 20px;
+	}
+
+   .spanfirstOpen {
+	   transition: 0.5s;
+	   transform: rotateZ(-45deg);
+	   margin-left: 0px;
+	   margin-top: 10px;
+	}
+
+   .spanlastOpen {
+	   transition: 0.5s;
+	   transform: rotateZ(45deg);
+	   margin-top: 10px;
+	   margin-left: 0px;
+	}
+
+   .spanmidleOpen {
+	   transition: 0.5s;
+	   opacity: 0;
+	}
+
+   .spanfirstClose {
+	   transition: 0.5s;
+	   transform: rotateZ(0);
+	   margin-left: 0px;
+	   margin-top: 0px;
+	}
+
+   .spanlastClose {
+	   transition: 0.5s;
+	   transform: rotateZ(0);
+	   margin-top: 20px;
+	   margin-left: 0px;
+	}
+
+   .spanmidleClose {
+	   transition: 0.5s;
+	   opacity: 1;
+	}
+
+   .opened {
+		display: block;
+		transition: 0.5s;
+		opacity: 1;
+		-webkit-animation:  0.5s show-animation;
+		animation:  0.5s show-animation;
+	}
+
+   .icon {
+	   display: block;
+	}
+ }
+
+ @-webkit-keyframes show-animation { 
+	from {	 
+		 opacity: 0;
+	} to { 
+		opacity: 1;
+	}  
+}
+
+@keyframes show-animation { 
+	from { 
+		opacity: 0;
+	} to { 
+		opacity: 1;
+	}  
+}
+
+@media screen and (max-width: 450px){
+	.main-name h1 {
+		font-size: x-large;
+		padding: 1vh 1vw;
+	}
+}
