@@ -4,6 +4,8 @@ const session = require('express-session');
 const fileUpload = require('express-fileupload');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const createError = require('http-errors');
 
 const path = require('path');
 const fs = require('fs');
@@ -41,9 +43,16 @@ app.post('/send', (req,res) => {
 
 	res.redirect('/');
 });
-
-app.use((req, res) => {
-	res.status(404).redirect('/error.html');
+app.use(function(req, res, next) {
+    next(createError(404));
+});
+  
+app.use(function(err, req, res, next) {
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
+  
+    res.status(err.status || 500);
+    res.render('error');
 });
 
 function shouldCompress (req, res) {
@@ -53,4 +62,4 @@ function shouldCompress (req, res) {
 	return compression.filter(req, res)
 }
 
-app.listen(PORT, () => console.log('app working on http://localhost:3030 port'));
+module.exports = app;

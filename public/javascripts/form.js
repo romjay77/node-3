@@ -58,7 +58,11 @@ function submit(target) {
             bubbles: true,
             cancelable: true
         });
-        target.parentNode.previousElementSibling.children[0].children[0].dispatchEvent(event);
+        let form = target.parentNode.previousElementSibling.children[0].children[0];
+        var isValid = form.dispatchEvent(event);
+        if (isValid) {
+            form.submit();
+        }
     } catch (error) {
         return;
     }
