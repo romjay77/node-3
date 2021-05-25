@@ -15,7 +15,7 @@
 .link-dropdown .item {
 	margin: 0 0 5px 0;
     max-width: 300px;
-	font-size: medium;
+	font-size: smaller;
 }
 .link-dropdown .item:nth-last-child(1) {
 	margin: 0;
