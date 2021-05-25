@@ -35,7 +35,7 @@
 .footer-filter {
     height: 100%;
     width: 100%;
-    background-color: rgb(80 65 0 / 50%);
+    background: linear-gradient(142deg, rgb(118 104 127 / 50%) 0%, rgb(117 104 150 / 42%) 50%, rgb(87 104 125 / 65%) 100%);
     z-index: -1;
 }
 

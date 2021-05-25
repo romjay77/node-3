@@ -38,7 +38,7 @@
 	border-radius: 5px;
 	font-size: 14px;
 	border: none;
-    background: linear-gradient(142deg, rgb(156 158 117 / 90%) 0%, rgb(228 128 128 / 66%) 50%, rgb(208 172 106 / 77%) 100%);
+	background: linear-gradient(142deg, rgb(100 86 109 / 90%) 0%, rgb(135 128 152 / 80%) 50%, rgb(64 87 115 / 90%) 100%);
     color: black;
 }
 
@@ -64,6 +64,10 @@ input[type=text], input[type=submit], textarea {
 .input:focus {
 	transition: 0.5s;
 	transform: scale(1.03);
+}
+
+.input::placeholder {
+    color: whitesmoke;
 }
 
 .validate-input {

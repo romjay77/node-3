@@ -1,62 +1,24 @@
-// const Email = require('email-templates');
-const path = require('path');
+const nodemailer = require('nodemailer');
 
-
-// (to, nameCustomer) => {
-// 	// let logo = fs.readFileSync(path.resolve('emails/images/logo.png')).toString('base64');
-// 	let email = getEmail();	
-		
-// 	email.send({
-// 		template: 'templates',
-// 		message: { 
-// 			to: to
-// 		},
-// 		locals: { image: logo, name: nameCustomer }
-// 	}).catch(console.error);
-// };
-
-exports.send = (template, to, data) => {		
-	let email = getEmail();
-
-	email.send({
-		template: template,
-		message: {
-			to: to
-		},
-		locals: data
-	});
-};
-
-// exports.getAdmin = () => {
-// 	return JSON.parse(fs.readFileSync(path.resolve('public/area/admin/admin.json'))).mail;
-// };
-
-function getEmail() {
-	return new Email({
-		send: true,
-		preview: false,
-		juice: true,
-		message: {
-			from: 'info@fasadni.by'
-		},
-		transport: {
-		secure: true,
+exports.send = async (to, html, text) => {		
+	let transporter = nodemailer.createTransport({
 		host: 'mailbe04.hoster.by',
 		port: 465,
-			auth: {
-				user: 'info@fasadni.by',
-				pass: '!S@bchuk1'
-			}
+		secure: true, 
+		auth: {
+			user: 'info@fasadni.by',
+			pass: '!S@bchuk1',
 		},
-		htmlToText: false,
-		textOnly: false,
-		juiceResources: {
-			preserveImportant: true,
-			webResources: {
-				relativeTo: path.resolve('emails/templates'),
-				images: true 
-			}
-		},
-		views: { options: { extension: 'ejs' }}
 	});
+	
+	let info = await transporter.sendMail({
+		from: 'info@fasadni.by',
+		to: to,
+		subject: "Postal service App",
+		text: text,
+		html: html,
+	});
+
+	console.log(`Message sent: ${ info.messageId }`);
+	console.log(`Preview URL: ${ nodemailer.getTestMessageUrl(info)}`);
 }

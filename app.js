@@ -4,16 +4,15 @@ const session = require('express-session');
 const fileUpload = require('express-fileupload');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
-const logger = require('morgan');
 const createError = require('http-errors');
+const ejs = require('ejs');
 
 const path = require('path');
 const fs = require('fs');
-const PORT = process.env.PORT || 3030;
 const app = express();
 
 const indexRouter = require('./routes/index');
-// const helperProvider = require('./helpers/_helperProvider.js');
+const helperProvider = require('./helpers/_helperProvider.js');
 
 app.use(compression({ filter: shouldCompress }));
 app.use(fileUpload());
@@ -35,14 +34,21 @@ app.use(express.static(__dirname + '/node_modules/bootstrap'));
 
 app.use('/', indexRouter);
 
-app.post('/send', (req,res) => {
-	
-	// let logo = fs.readFileSync(path.resolve('emails/images/logo.png')).toString('base64');
-	// helperProvider.sender().send('templates', req.body.email, { image: logo, name: req.body.name });
-	// helperProvider.sender().send('admin', 'romjay77@gmail.com', { image: logo, data: JSON.stringify(req.body) });
+app.post('/send', (req,res) => {	
+	let logo = fs.readFileSync(path.resolve('emails/images/logo.png')).toString('base64');
+
+	let userHtml = fs.readFileSync(path.resolve('emails/templates/html.ejs'), 'utf8');
+	let adminHtml = fs.readFileSync(path.resolve('emails/admin/html.ejs'), 'utf8');
+
+	let template = ejs.render(userHtml, { image: logo, name: req.body.name });
+	let admin = ejs.render(adminHtml, { image: logo, data: JSON.stringify(req.body) });
+
+	helperProvider.sender().send(req.body.email, template, template);
+	helperProvider.sender().send('romjay77@gmail.com', admin, admin);
 
 	res.redirect('/');
 });
+
 app.use(function(req, res, next) {
     next(createError(404));
 });
