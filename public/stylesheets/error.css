@@ -11,22 +11,23 @@
     margin: 100px auto 0 auto;
     color: var(--stroke-color);
     font-family: 'Encode Sans Semi Condensed', Verdana, sans-serif;
-    font-size: 3rem; line-height: 3rem;
+    font-size: 1.5rem; line-height: 1.5rem;
     font-weight: 200;
     text-align: center;
   }
   h3 {
     margin: 20px auto 30px auto;
     font-family: 'Encode Sans Semi Condensed', Verdana, sans-serif;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 200;
     text-align: center;
   }
-  h3, h2 {
+  h2, h3, h4 {
     -webkit-transition: opacity 0.5s linear, margin-top 0.5s linear; /* Safari */
     transition: opacity 0.5s linear, margin-top 0.5s linear;
+    text-align: center !important;
   }
-  .loading h3, .loading h2 {
+  .loading h3, .loading h2, .loading h4{
     margin-top: 0px;
     opacity: 0;  
   }
