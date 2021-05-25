@@ -12,6 +12,7 @@ const fs = require('fs');
 const app = express();
 
 const indexRouter = require('./routes/index');
+const adminRouter = require('./routes/admin');
 const helperProvider = require('./helpers/_helperProvider.js');
 
 app.use(compression({ filter: shouldCompress }));
@@ -32,6 +33,7 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(__dirname + '/node_modules/bootstrap'));
 
+app.use('/admin', adminRouter);
 app.use('/', indexRouter);
 
 app.post('/send', (req,res) => {	
