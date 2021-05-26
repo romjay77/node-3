@@ -1,11 +1,12 @@
-var videoExt = ['JPEG', 'JPG', 'PNG', 'GIF', 'SVG']
-var imgExt = ['MP4', 'M4P', 'M4V', 'GIF', 'MPG', 'MPEG', 'MPV', 'MP2', 'AVI', 'WMV']
+var imgExt = ['JPEG', 'JPG', 'PNG', 'GIF', 'SVG']
+var videoExt = ['MP4', 'M4P', 'M4V', 'MPG', 'MPEG', 'MPV', 'MP2', 'AVI', 'WMV']
 var modal;
 
 function init() {
     document.onclick = onClickInit;
     document.onchange = onChangeInit;
     modal = new bootstrap.Modal(document.getElementById('warning-modal'), { });
+    document.getElementById('add-project-form').onsubmit = verifyAddProjectForm;
 }
 
 function onClickInit(e) {
@@ -34,6 +35,15 @@ function activeSubmit(id) {
     btn.classList.remove('btn-outline-secondary');
 }
 
+function disableSubmit(id) {
+    let btn = document.getElementById(id);
+
+    btn.setAttribute('disabled', 'disabled')
+
+    btn.classList.remove('btn-outline-success');
+    btn.classList.add('btn-outline-secondary');
+}
+
 function addProject(e) {
     if(e.target.id !== 'add-project') return;
     let form = document.getElementById('add-project-form');
@@ -42,6 +52,11 @@ function addProject(e) {
 
 function onChangedAddProjectForm(e) {
     if (!hasClass(e.target, 'add-project')) return;
+
+    verifyAddProjectForm();
+}
+
+function verifyAddProjectForm() {
     let inputs = Array.from(document.querySelectorAll('.add-project'));
     let isValid = true;
     let hasCorrectPh = true;
@@ -51,19 +66,33 @@ function onChangedAddProjectForm(e) {
         if(input.type === 'file') {
             hasFiles = hasFiles ? hasFiles : input.files.length > 0;
             if (input.id === 'photos') {
-                Array.from(input.files).forEach(file => {
-                    let ext = file.name.split('.').pop();
-                });                
+                hasCorrectPh = Array.from(input.files).every(x => extChecker(x, imgExt))                
             } else if (input.id === 'videos') {
-                
+                hasCorrectVd = Array.from(input.files).every(x => extChecker(x, videoExt))    
             }
         } else {
             isValid = input.value !== '';
         }
     });
-    // modal.toggle();
+
+    let result = hasFiles && isValid && hasCorrectPh && hasCorrectVd;
+    if (result) {
+        activeSubmit('submmit-project')
+    } else {
+        disableSubmit('submmit-project')
+        if (hasFiles && (!hasCorrectPh || !hasCorrectVd)) {
+            modal.toggle();
+        }
+    }
+
+    return result;
 }
 
 function hasClass(item, name) {
     return item.classList.contains(name);
+}
+
+function extChecker(file, extensions) {
+    let ext = file.name.split('.').pop().toUpperCase();
+    return extensions.some(x => x === ext)
 }

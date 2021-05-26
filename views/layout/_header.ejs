@@ -4,15 +4,14 @@
 
 	<div class="main-name">
 		<div class="text-box">
-			<h1 style="margin: 0;">Дизайнерский ремонт под ключ</h1>
+			<h1 style="margin: 0;">Ваш дизайнерский ремонт под ключ</h1>
 			<p>
-				Компания "Ремонт Под Ключ" более 19 лет занимается ремонтом и отделкой квартир и коттеджей в Минске под ключ.
-				Высокие стандарты качества и низкие цены позволили нам занять лидирующие позиции на рынке.
-				Наше кредо - "Любую работу нужно делать хорошо или не делать вовсе".
+				Более 15 лет на рынке <strong>строительных услуг</strong>. 
+				<strong>Высокие стандарты качества</strong> позволили занять нам лидирующие позиции. Наше кредо - "Любую работу нужно делать хорошо или не делать вовсе"
 			</p>
 
 			<div class="link-box">
-				<div><a class="button primary" href="tel:45645645"><i class="fas fa-phone jump" style="padding-right: 10px;"></i>45645654</a></div>
+				<div><a class="button primary" href="tel:<%-data.phone%>"><i class="fas fa-phone jump" style="padding-right: 10px;"></i><%-data.phone%></a></div>
 				<div><a class="button secondary" data-bs-toggle="modal" data-bs-target="#subscription-modal"><i class="fab fa-wpforms jump" style="padding-right: 10px;"></i>Заказать звонок</a></div>
 			</div>
 		</div>
@@ -57,14 +56,15 @@
 
 	<div class="items ajax">
 		<a class="item ajax mobile-item" href="/index">Главная</a>
-		<a class="item dropdown">Дизайнерский ремонт</a>
+		<a class="item ajax mobile-item" href="/repair-flat">Дизайнерский ремонт</a>
+		<a class="item ajax mobile-item" href="/repair-house">Ремонт под ключ</a>
 		<a class="item ajax mobile-item" href="/projects">Галерея</a>
 		<a class="item ajax mobile-item" href="/about">О нас</a>
 	</div>
 	<div class="link-box">
 		<div>
-			<a class="button primary mobile-item" href="tel:12312321312"><i class="fas fa-phone jump" style="padding-right: 10px;"></i>
-				123123
+			<a class="button primary mobile-item" href="tel:<%-data.phone%>"><i class="fas fa-phone jump" style="padding-right: 10px;"></i>
+				<%-data.phone%>
 			</a>
 		</div>
 		<div>
@@ -153,14 +153,13 @@
 	</div>
 </nav>
 <div id="link-dropdown" class="link-dropdown list">
-	<a class="item ajax mobile-item list" href="/repair-flat">Квартир</a>
-	<a class="item ajax mobile-item list" href="/repair-house">Домов</a>
-	<a class="item ajax mobile-item list" href="/repair-estate">Комерчиской недвижемости</a>
+	<a class="item ajax mobile-item list" href="/repair-flat">Дизайнерский ремонт</a>
+	<a class="item ajax mobile-item list" href="/repair-house">Ремонт под ключ</a>
 </div>
 
 <div id="fixed-links" class="fixed-link-box link-box">
 	<div>
-		<a title="Позвонить" aria-label="Позвонить" class="button primary" href="tel:12312321312"><i class="fas fa-phone jump"></i></a>
+		<a title="Позвонить" aria-label="Позвонить" class="button primary" href="tel:<%-data.phone%>"><i class="fas fa-phone jump"></i></a>
 	</div>
 	<div>
 		<a title="Связаться" aria-label="Связаться" class="button secondary" data-bs-toggle="modal" data-bs-target="#subscription-modal">

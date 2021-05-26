@@ -6,17 +6,17 @@
     <div id="project-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="<%- images[0].src %>" class="image-source" alt="<%- name %>">
+                <img src="<%- images[0] %>" class="image-source" alt="<%- name %>">
             </div>
             <% for(let i = 1; i < images.length; i++) { %>
                 <div class="carousel-item">
-                    <img src="<%- images[i].src %>" class="image-source" alt="<%- name %>">
+                    <img src="<%- images[i] %>" class="image-source" alt="<%- name %>">
                 </div>
             <%}%>
             <% videos.forEach(video => { %>
                 <div class="carousel-item">
                     <video controls="controls" poster="images/icons/video.svg">
-                        <source src="<%- video.src %>" type="video/<%- video.ext %>">
+                        <source src="<%- video %>" type="video/<%-(video.split('.').pop().toLowerCase())%>">
                         Видео не поддерживается вашим браузером. 
                     </video>
                 </div>

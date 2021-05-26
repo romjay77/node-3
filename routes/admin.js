@@ -31,15 +31,18 @@ adminRouter.post("/change-login", (req, res) => {
     data.phone = req.body.phone;
     data.email = req.body.email;
     repository.setData(data);
+    refreshData();
     res.redirect('/admin');
 });
 
 adminRouter.post("/remove-project", (req, res) => {
-	project.removeProject(req.body.projectName);
-	res.redirect('/admin');
+	project.removeProject(req.body.name);
+	refreshData();
+    res.redirect('/admin');
 });
 adminRouter.post("/add-project", (req, res) => {
 	project.addProject(req.body, req.files);
+	refreshData();
 	res.redirect('/admin');
 });
 adminRouter.post("/logOut", (req, res) => {
@@ -53,6 +56,10 @@ function getData() {
         _data = repository.getData();
     }    
     return _data;
+}
+
+function refreshData() {
+    _data = repository.getData();
 }
 
 module.exports = adminRouter;

@@ -163,7 +163,7 @@ function drawDropDownMenu(isShow, e) {
             10 : e.clientX + 125 > window.innerWidth ?
             window.innerWidth - 250 : e.clientX - 115;
 
-        let top =  e.clientY - 120 < 50 ? e.clientY + 20 + window.pageYOffset : e.clientY - 120 + window.pageYOffset
+        let top =  e.clientY - 70 < 50 ? e.clientY + 20 + window.pageYOffset : e.clientY - 70 + window.pageYOffset
 
         menu.style.top = top + 'px';
         menu.style.left = left + 'px';

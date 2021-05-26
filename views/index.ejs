@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 	<head>
-		<title>Комплексный ремонт и отделка высокого уровня квартир офисов, комерчиской недвижемости | Услуги | PodKey.by</title>
+		<title>Ваш дизайнерский ремонт под ключ ремонт и отделка высокого уровня квартир офисов, комерчиской недвижемости | Услуги </title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="format-detection" content="telephone=yes"/>
@@ -12,9 +12,8 @@
         <link href="images/icons/favicon.ico" rel="mask-icon">
 		<link rel="icon" type="image/ico" href="images/icons/favicon.ico"/>
 
-        <meta name="title" content="Комплексный ремонт и отделка высокого уровня квартир офисов, комерчиской недвижемости | Услуги | PodKey.by">
-		<meta name="description" content="
-        Хотите сделать хороший ремонт квартиры, котеджа, дома или комерчиской недвижемости за разумные деньги в Минске или по всей РБ? Обращайтесь к нам! Мы поможем минимизировать предстоящие расходы. Цены 2021 год">
+        <meta name="title" content="Ваш дизайнерский ремонт под ключ ремонт и отделка высокого уровня квартир офисов, комерчиской недвижемости | Услуги ">
+		<meta name="description" content="Более 15 лет на рынке строительных услуг. Высокие стандарты качества позволили занять нам лидирующие позиции. Наше кредо - Любую работу нужно делать хорошо или не делать вовсе Цены 2021 год">
 		<meta name="robots" content="index" />
 
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.1/css/all.css">
@@ -32,17 +31,17 @@
 		<script type="text/javascript" src="javascripts/projects.js"></script>
 	</head>
 	<body onload="init();">
-		<%- include('layout/_header', { state: state }) %>
+		<%- include('layout/_header', { state: state, data: data }) %>
 		
 		<div id="main-container">
 			<% if (state === 'index') { %>
-				<%- include('partials/main') %>
+				<%- include('partials/main', { data: data }) %>
 			<% } %>
 			<% if (state === 'about') { %>
 				<%- include('partials/about') %>
 			<% } %>
 			<% if (state === 'projects') { %>
-				<%- include('partials/projects') %>
+				<%- include('partials/projects', { data: data }) %>
 			<% } %>
 			<% if (state === 'repair-flat') { %>
 				<%- include('partials/repair-flat') %>
@@ -50,12 +49,9 @@
 			<% if (state === 'repair-house') { %>
 				<%- include('partials/repair-house') %>
 			<% } %>
-			<% if (state === 'repair-estate') { %>
-				<%- include('partials/repair-estate') %>
-			<% } %>
 		</div>
 
-		<%- include('layout/_footer') %>
+		<%- include('layout/_footer', { data: data }) %>
 		<!-- Modal -->
 		<div class="modal fade" id="subscription-modal" tabindex="-1" aria-labelledby="header-label" aria-hidden="true">
 			<div class="modal-dialog">

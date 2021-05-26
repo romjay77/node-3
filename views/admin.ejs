@@ -80,7 +80,7 @@
                                     <td><%- item.name %></td>
                                     <td>
                                         <form action="/admin/remove-project" method="POST">
-                                            <input type="hidden" name="name" value="<%- item.name%>">
+                                            <input type="hidden" name="name" value="<%- item.dirname%>">
                                             <input type="submit" value="удалить" class = "btn btn-outline-danger">
                                         </form>
                                     </td>
@@ -103,7 +103,7 @@
                                 <label for="videos" class="form-label">Видео проекта</label>
                                 <input class="add-project form-control" type="file"  name="videos" id="videos" multiple>
                             </div>
-                            <div class="col-12 mt-4">
+                            <div class="col-12 mt-4" data-validate="Введите описание проекта">
                                 <textarea rows="6" class="add-project form-control" name="description" placeholder="Описание проекта"></textarea>
                             </div>
                         </div>
@@ -127,7 +127,7 @@
                     </div>
                     <div id="warning-modal-body" class="modal-body">
                         Поддерживаемые форматы для фото: 'JPEG', 'JPG', 'PNG', 'GIF', 'SVG<br>
-                        Поддерживаемые форматы для видео: 'MP4', 'M4P', 'M4V', 'GIF', 'MPG', 'MPEG', 'MPV', 'MP2', 'AVI', 'WMV' <br>
+                        Поддерживаемые форматы для видео: 'MP4', 'M4P', 'M4V', 'MPG', 'MPEG', 'MPV', 'MP2', 'AVI', 'WMV' <br>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
