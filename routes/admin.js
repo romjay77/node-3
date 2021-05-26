@@ -1,35 +1,58 @@
 const express = require("express");
-const adminController = require("../controllers/adminController");
-const helperProvider = require('../helpers/_helperProvider.js');
+const project = require('../helpers/_project.js');
+const repository = require('../helpers/_repository.js');
 
 const adminRouter = express.Router();
 
-var session;
+var _session;
+var _data;
 
 adminRouter.get("/", (req, res) => {
-    session = req.session;
-    if(session.login){
-        return adminController.index(req, res);
+    _session = req.session;
+    if(_session.login){
+        res.render('admin', {
+            data: getData()
+          });
     } else {
-        return adminController.login(req, res);
+        res.render('login');
     }
 });
 
 adminRouter.post("/", (req, res) => {
-    session = req.session;
-    session.login = helperProvider.logins().logIn(req.body.login, req.body.pass);
+    _session = req.session;
+    let cred = getData().cred;
+    _session.login = req.body.login === cred.user && req.body.pass === cred.pass;
     res.redirect('/admin');
 });
-adminRouter.post("/changeLogin", adminController.changeLogin);
-adminRouter.post("/removeProject", adminController.removeProject);
-adminRouter.post("/addProject", adminController.addProject);
-adminRouter.post("/updateModel", adminController.updateModel);
-adminRouter.post("/removeService", adminController.removeService);
-adminRouter.post("/addService", adminController.addService);
-adminRouter.post("/removeQestion", adminController.removeQestion);
-adminRouter.post("/addQestion", adminController.addQestion);
-adminRouter.post("/removeAdvantage", adminController.removeAdvantage);
-adminRouter.post("/addAdvantage", adminController.addAdvantage);
-adminRouter.post("/logOut", adminController.logOut); 
+adminRouter.post("/change-login", (req, res) => {
+    let data = getData();
+    data.cred.user = req.body.user;
+    data.cred.pass = req.body.pass;
+    data.phone = req.body.phone;
+    data.email = req.body.email;
+    repository.setData(data);
+    res.redirect('/admin');
+});
 
-module.exports = admin;
+adminRouter.post("/remove-project", (req, res) => {
+	project.removeProject(req.body.projectName);
+	res.redirect('/admin');
+});
+adminRouter.post("/add-project", (req, res) => {
+	project.addProject(req.body, req.files);
+	res.redirect('/admin');
+});
+adminRouter.post("/logOut", (req, res) => {
+	_session = req.session;
+	_session.login = false;
+	res.redirect('/');
+}); 
+
+function getData() {
+    if (!_data) {
+        _data = repository.getData();
+    }    
+    return _data;
+}
+
+module.exports = adminRouter;

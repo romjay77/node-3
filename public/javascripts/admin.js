@@ -1,58 +1,44 @@
-$('.edit').click((el) => {
-	let td = el.currentTarget.parentElement.previousElementSibling;
-	$(td.lastChild).removeClass('hid');
-	$(td.firstChild).addClass('hid');
-});
+var videoExt = ['JPEG', 'JPG', 'PNG', 'GIF', 'SVG']
+var imgExt = ['MP4', 'M4P', 'M4V', 'GIF', 'MPG', 'MPEG', 'MPV', 'MP2', 'AVI', 'WMV']
 
-var isDisabled = true;
-
-$('#credentials').on('input', () => {
-	if(isDisabled) {
-		isDisabled = false;
-		activeSubmit();
-	}
-});
-
-$('#add-mail > td > a').click(() => {
-	let = htnl =`<tr><td>Почта администратора для рассылки</td><td><input class="form-control col" type="text"
-		name="mail"></td><td><a class="remove btn btn-outline-danger">Удалить</a></td></tr>`;		
-	$('#add-mail').before(htnl);
-});
-
-$('table').on('click', (el) => {
-	if(el.target.classList.contains('remove')) {
-		$(el.target.parentElement.parentElement).remove();
-		if(isDisabled) {
-			isDisabled = false;
-			activeSubmit();
-		}
-	};
-});
-
-function activeSubmit() {
-	$('#home form input[type="submit"]')
-		.removeAttr('disabled')
-		.removeClass('btn-outline-secondary')
-		.addClass('btn-outline-success');
+function init() {
+    document.onclick = onClickInit;
 }
 
-$('#project > div > button:nth-child(1)').click((el) => {
-	$('#addProj').removeClass('hid');
-	$(el.currentTarget).addClass('hid');
-});
+function onClickInit(e) {
+    editCread(e);
+}
 
+function editCread(e) {
+    if (!hasClass(e.target, 'edit-cread')) return;
+    let td = e.target.parentElement.previousElementSibling;
+    td.firstChild.classList.add('hid');
+    td.lastChild.classList.remove('hid');
+    activeSubmit();
+}
 
-$('#services .add').click((el) => {
-	$('#services form[action="/admin/addService"]').removeClass('d-none');
-	$(el.currentTarget).addClass('d-none');
-});
+function activeSubmit() {
+    let btn = document.getElementById('save-cred');
+    if (!btn.getAttribute('disabled')) return;
 
-$('#faq .add').click((el) => {
-	$('#faq form[action="/admin/addQestion"]').removeClass('d-none');
-	$(el.currentTarget).addClass('d-none');
-});
+    btn.removeAttribute('disabled');
+    btn.classList.add('btn-outline-success');
+    btn.classList.remove('btn-outline-secondary');
+}
 
-$('#advantages .add').click((el) => {
-	$('#advantages form[action="/admin/addAdvantage"]').removeClass('d-none');
-	$(el.currentTarget).addClass('d-none');
-});
+// $('#project > div > button:nth-child(1)').click((el) => {
+// 	$('#addProj').removeClass('hid');
+// 	$(el.currentTarget).addClass('hid');
+// });
+
+function hasClass(item, name) {
+    return item.classList.contains(name);
+}
+
+function toggleClass(item, name) {
+    if (!hasClass(item, name)) {
+        item.classList.add(name);
+    } else {
+        item.classList.remove(name);
+    }
+}
