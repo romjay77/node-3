@@ -11,6 +11,7 @@
     transition: 0.5s;
     overflow: hidden;
     border-radius: 10px;
+    max-height: 400px;
 }
 
 .project:nth-child(even) {

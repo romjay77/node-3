@@ -1,8 +1,8 @@
 <div class="container mb-5">
     <div class="text-center mb-3">
-        <h3>Галерея</h3>
+        <h3>Наши работы</h3>
     </div>
-    <div class="m-0 p-5 pb-0">
+    <div class="m-0 p-3 pb-0">
         <p>
             Фотографии и видео ремонтов квартир и других помещений, выполненных нашим коллективом
         </p>
@@ -10,20 +10,49 @@
     <div class="projects">
         <div class="box full-info">
             <% for(let i = 0; i < data.projects.length; i++) { %>
-                    <div data-name="<%- data.projects[i].dirname %>" class="project pr-effect">
-                        <div class="title pr-effect" style="opacity: 0.6;">
-                            <a class="button secondary pr-effect" style="color: black;">
-                                <i class="fas fa-eye jump pr-effect" style="padding-right: 10px;"></i>
-                                Смотреть альбом
-                            </a>
-                        </div>
-                        <a class="link pr-effect" style="opacity: 1;">
-                            <img class="img pr-effect" alt="<%- data.projects[i].description %>" src="<%- data.projects[i].images[0] %>" style="transform: scale(1);">
+                <div data-name="<%- data.projects[i].dirname %>" class="project pr-effect">
+                    <div class="title pr-effect" style="opacity: 0.6;">
+                        <a class="button secondary pr-effect" style="color: black;">
+                            <i class="fas fa-eye jump pr-effect" style="padding-right: 10px;"></i>
+                            Смотреть альбом
                         </a>
-                        <p class="description pr-effect" style="opacity: 0;">
-                            <%- data.projects[i].description %>
-                        </p>
                     </div>
+                    <a class="link pr-effect" style="opacity: 1;">
+                        <img class="img pr-effect" alt="<%- data.projects[i].description %>" src="<%- data.projects[i].images[0] %>" style="transform: scale(1);">
+                    </a>
+                    <p class="description pr-effect" style="opacity: 0;">
+                        <%- data.projects[i].description %>
+                    </p>
+                </div>
+            <% }%>
+        </div>
+    </div>
+
+    <div id="design-project-ancor" class="text-center mb-3 mt-5">
+        <h3>Дизайнерские работы</h3>
+    </div>
+    <div class="m-0 p-3 pb-0">
+        <p>
+            Фотографии и видео ремонтов квартир и других помещений, реализованных нашими дизайнерами
+        </p>
+    </div>
+    <div class="projects">
+        <div class="box full-info">
+            <% for(let i = 0; i < data.designProjects.length; i++) { %>
+                <div data-type="1" data-name="<%- data.designProjects[i].dirname %>" class="project pr-effect">
+                    <div class="title pr-effect" style="opacity: 0.6;">
+                        <a class="button secondary pr-effect" style="color: black;">
+                            <i class="fas fa-eye jump pr-effect" style="padding-right: 10px;"></i>
+                            Смотреть альбом
+                        </a>
+                    </div>
+                    <a class="link pr-effect" style="opacity: 1;">
+                        <img class="img pr-effect" alt="<%- data.designProjects[i].description %>" src="<%- data.designProjects[i].images[0] %>" style="transform: scale(1);">
+                    </a>
+                    <p class="description pr-effect" style="opacity: 0;">
+                        <%- data.designProjects[i].description %>
+                    </p>
+                </div>
             <% }%>
         </div>
     </div>

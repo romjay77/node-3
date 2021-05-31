@@ -173,42 +173,47 @@ function drawDropDownMenu(isShow, e) {
     }
 }
 
-var lastEffectedProject;
+var effectedProject;
 var isSetted;
+var inProgress;
 function projectEffect(e) {
-    if (!hasClass(e.target, 'pr-effect')) {
-        turnOffPrEffect();
-        return;
-    }
-    if (isSetted) return;
-    isSetted = true;
-
     let target = e.target;
     while (!hasClass(target, 'project')) {
         target = target.parentElement;
+        if (!target) {
+            turnOffPrEffect();
+            return;
+        };
     }
-    toggleClass(target, 'shadow-lg');
-    target.children[1].style.opacity = '0.4';
-    target.children[0].style.opacity = '1';
-    if (target.children[2]) {
-        target.children[2].style.opacity = '1';
+    
+    if (isSetted && effectedProject && effectedProject.dataset["name"] !== target.dataset["name"]) {
+        isSetted = false;
+        turnOffPrEffect();
+        return;
     }
-    target.children[1].children[0].style.transform = 'scale(1.3)';
-    lastEffectedProject = target;
+    isSetted = true;
+    effectedProject = target;
+
+    effectedProject.classList.add('shadow-lg');
+    effectedProject.children[1].style.opacity = '0.4';
+    effectedProject.children[0].style.opacity = '1';
+    if (effectedProject.children[2]) {
+        effectedProject.children[2].style.opacity = '1';
+    }
+    effectedProject.children[1].children[0].style.transform = 'scale(1.3)';
 }
 
 function turnOffPrEffect(target) {
-    let curTarget = target ? target : lastEffectedProject ? lastEffectedProject : null;
+    let curTarget = target ? target : effectedProject ? effectedProject : null;
     if (!curTarget) return;
 
-    toggleClass(curTarget, 'shadow-lg');
+    effectedProject.classList.remove('shadow-lg');
     curTarget.children[1].style.opacity = '1';
     curTarget.children[0].style.opacity = '0.6';
     if (curTarget.children[2]) {
         curTarget.children[2].style.opacity = '0';
     }
     curTarget.children[1].children[0].style.transform = 'scale(1)';
-    lastEffectedProject = null;
     isSetted = false;
 }
 
@@ -247,7 +252,9 @@ async function showProject(e) {
         target = target.parentElement;
     }
 
-    let response = await fetch(`/current-projects-ajax?name=${ target.dataset["name"] }`);
+
+    let response = target.dataset["type"] === '1' ? await fetch(`/current-design-projects-ajax?name=${ target.dataset["name"] }`):
+        await fetch(`/current-projects-ajax?name=${ target.dataset["name"] }`);
     let html = await response.text();
     document.getElementById('project-modal-content').innerHTML = html;
     projectModal.toggle();

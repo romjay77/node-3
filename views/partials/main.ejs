@@ -42,7 +42,7 @@
     </p>
     <div class="projects">
         <div class="text-center mb-3">
-            <h3>Нашт проекты</h3>
+            <h3>Наши работы</h3>
         </div>
         <div class="box">
             <% for(let i = 0; i < data.projects.length; i++) { %>
@@ -56,6 +56,30 @@
                         </div>
                         <a class="link pr-effect" style="opacity: 1;">
                             <img class="img pr-effect" alt="<%- data.projects[i].description %>" src="<%- data.projects[i].images[0] %>" style="transform: scale(1);">
+                        </a>
+                    </div>
+                <% }}%>
+        </div>
+        <div class="text-center pb-5">
+            <a class="button primary ajax" href="/projects">Смотреть все</a>
+        </div>
+    </div>
+    <div class="projects">
+        <div class="text-center mb-3">
+            <h3>Дизайнерские работы</h3>
+        </div>
+        <div class="box">
+            <% for(let i = 0; i < data.designProjects.length; i++) { %>
+                <% if (i < 2) {%>
+                    <div data-type="1" data-name="<%- data.designProjects[i].dirname %>" class="project pr-effect">
+                        <div class="title pr-effect" style="opacity: 0.6;">
+                            <a class="button secondary pr-effect" style="color: black;">
+                                <i class="fas fa-eye jump pr-effect" style="padding-right: 10px;"></i>
+                                Смотреть альбом
+                            </a>
+                        </div>
+                        <a class="link pr-effect" style="opacity: 1;">
+                            <img class="img pr-effect" alt="<%- data.designProjects[i].description %>" src="<%- data.designProjects[i].images[0] %>" style="transform: scale(1);">
                         </a>
                     </div>
                 <% }}%>

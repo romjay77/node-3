@@ -97,6 +97,7 @@
 .item:hover {
 	background-color: rgb(33 16 39 / 30%);	
 	text-shadow: 1px 1px 5px black;
+	transition: 0.3s;
 }
 
 .active {
@@ -224,7 +225,7 @@ nav.nav-menu::after {
 	-webkit-background-size: cover;
 	background-size: cover;
 	background-repeat: no-repeat;
-	background-position: bottom;
+	background-position: center;
 }
 
 .scale-background {

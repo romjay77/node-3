@@ -45,6 +45,16 @@ adminRouter.post("/add-project", (req, res) => {
 	refreshData();
 	res.redirect('/admin');
 });
+adminRouter.post("/remove-design-project", (req, res) => {
+	project.removeDesignProject(req.body.name);
+	refreshData();
+    res.redirect('/admin');
+});
+adminRouter.post("/add-design-project", (req, res) => {
+	project.addDesignProject(req.body, req.files);
+	refreshData();
+	res.redirect('/admin');
+});
 adminRouter.post("/logOut", (req, res) => {
 	_session = req.session;
 	_session.login = false;

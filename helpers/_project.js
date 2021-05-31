@@ -11,6 +11,28 @@ exports.removeProject = name => {
     repository.setData(data);
 }
 
+exports.removeDesignProject = name => {
+	rimraf.sync(path.resolve(`public/dist/designProject/${ name }`));
+
+    let data = repository.getData();
+    data.designProjects = data.designProjects.filter(x => x.dirname !== name)
+    repository.setData(data);
+}
+
+exports.addDesignProject = (body, files) => {
+	let name = Date.now().toString();
+	let local = `public/dist/designProject/${ name }`;
+
+	if (fs.existsSync(local)) return;
+    fs.mkdirSync(local);
+
+    let project = addProject(local, body.name, body.description, files);
+	project.dirname = name;
+    let data = repository.getData();
+    data.designProjects.push(project);
+    repository.setData(data);
+}
+
 exports.addProject = (body, files) => {
 	let name = Date.now().toString();
 	let local = `public/dist/projects/${ name }`;

@@ -67,4 +67,10 @@ router.get('/current-projects-ajax', function(req, res, next) {
 	res.render('layout/_project', project);
 });
 
+router.get('/current-design-projects-ajax', function(req, res, next) {
+	let name = req.query['name'];
+	let project = repository.cachedData().designProjects.find(x => x.dirname === name);
+	res.render('layout/_project', project);
+});
+
 module.exports = router;

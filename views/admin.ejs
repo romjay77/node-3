@@ -33,6 +33,9 @@
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="nav-project-tab" data-bs-toggle="pill" data-bs-target="#nav-project" type="button" role="tab" aria-controls="nav-project" aria-selected="false">Проекты</button>
                 </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="nav-design-project-tab" data-bs-toggle="pill" data-bs-target="#nav-design-project" type="button" role="tab" aria-controls="nav-design-project" aria-selected="false">Дизайнерские проекты</button>
+                </li>
             </ul>
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="nav-main" role="tabpanel" aria-labelledby="nav-main-tab">
@@ -112,6 +115,52 @@
                     
                     <div class="m-5 d-flex justify-content-center">
                         <button id="add-project" class="btn btn-outline-success">Добавить проект</button>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="nav-design-project" role="tabpanel" aria-labelledby="nav-design-project-tab">
+                    <h3>Дизайнерские проекты</h3>
+    				<div class="overflow-auto">
+                        <table class="table table-striped">
+                            <tbody>
+                                <% data.designProjects.forEach((item, indx) => { %>
+                                <tr>
+                                    <td><%- indx + 1 %></td>
+                                    <td><%- item.name %></td>
+                                    <td>
+                                        <form action="/admin/remove-design-project" method="POST">
+                                            <input type="hidden" name="name" value="<%- item.dirname%>">
+                                            <input type="submit" value="удалить" class = "btn btn-outline-danger">
+                                        </form>
+                                    </td>
+                                </tr>
+                                <% }); %>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <form encType="multipart/form-data" action="/admin/add-design-project" class="m-1 hid" id="add-design-project-form" method="POST">
+                        <div class="row mt-5">
+                            <div class="col-12 mt-2" data-validate="Введите название проекта">
+                                <input type="text" name="name" class="add-design-project inpt form-control" placeholder="Название проекта">
+                            </div>
+                            <div class="col-12 mt-3 custom-file" data-validate="Выберите фото">
+                                <label for="photos" class="form-label">Фото проекта</label>
+                                <input class="add-design-project form-control" type="file"  name="photos" id="photos-design" multiple>
+                            </div>
+                            <div class="col-12 mt-3 custom-file" data-validate="Выберите видео">
+                                <label for="videos" class="form-label">Видео проекта</label>
+                                <input class="add-design-project form-control" type="file"  name="videos" id="videos-design" multiple>
+                            </div>
+                            <div class="col-12 mt-4" data-validate="Введите описание проекта">
+                                <textarea rows="6" class="add-design-project form-control" name="description" placeholder="Описание проекта"></textarea>
+                            </div>
+                        </div>
+                        <input id="submmit-design-project" type="submit" value="Сохранить" class ="m-3 btn btn-outline-secondary" disabled="disabled">
+                    </form>
+                    
+                    <div class="m-5 d-flex justify-content-center">
+                        <button id="add-design-project" class="btn btn-outline-success">Добавить проект</button>
                     </div>
                 </div>
             </div>
